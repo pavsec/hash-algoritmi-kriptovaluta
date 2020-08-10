@@ -76,7 +76,7 @@ Sustav je siguran dok god većinu čvorova kontroliraju "pošteni" (\textit{hone
 Ispravnost svake jedinice kriptovalute osigurava blockchain.\cite{cc-survey}
 
 
-\section{Blockchain}
+\subsection{Blockchain}
 Sustav koji kriptovalute koriste za spremanje podataka o transakcijama je blockchain, decentralizirani mehanizam pohranjvanja informacija o transakcijama. Blockchain je distribuirana glavna knjiga u kojoj se spremaju i čuvaju podaci o transakcijama tako da svi korisnici imaju svoju kopiju, nema osobe ili organizacije koja ima popis transakcija te ih može mijenjati ili brisati. Sve informacije su vidljive svima koji koriste tu valutu te nije moguća manipulacija podataka. \\
 Blockchain je realiziran kao rastuća lista podataka raspoređenih u blokove. Svaki blok je povezan s prethodnim tako što sadrži hash vrijednost tog bloka. Osim hash vrijednosti, blokovi sadrže i: index bloka, hash prethodnog bloka, vremenske oznaku, podatake, koji su u slučaju
 kriptovaluta, transakcije. \\
@@ -89,6 +89,44 @@ Potvrda da su transakcije određenog bloka prihvaćeni od strane ostalih čvorov
 Proof of work je mehanizam kontrole pristupa koji koristimo kada želimo ograničiti, ali ne i zabraniti pristup resursu. Ovaj mehanizam od korisnika zahtjeva neku vrstu rada, najčešće procesorko vrijeme, i tako odvraća denial-of-service napade i druge vrste iskorištavanja usluga kao što je spam. Proof of work traži od korisnika da izračuna neku funkciju, tzv. \textit{pricing function}.\\
 Kriptovalute primjenjuju proof of work tako što miner mora pronaći nonce vrijednost koja hashirana zajedno sa ostalim parametrima koji ulaze u blok, zadovoljava neke uvjete. Kao primjer se može uzeti kriptovaluta Bitcoin, kod koje hashirana vrijednost mora imati određen broj bitova na početku hasha nula. Što je više nula u tom zahtjevu to je teže naći pripradajući hash. \\
 Proof of Work se koristi u blockchainu kako bi se stvorio zapis transakcija koji se ne može lako promijeniti, tj. trebalo bi ponoviti potreban rad za sve transakcije koje su bile nakon te koju bi htjeli promijeniti. Najdulji lanac služi kao dokaz svih događaja u lancu i dokaz najveće potrošene procesorske snage.\cite{proof-of-work}
+
+
+\subsubsection{Hash funkcija}
+Hash funkcije su funkcije koje ulazne podatke proizvoljne dužine sažimaju u izlaz određenog formata i veličine. Idealni algoritmi neće imati kolizija, tj. za svaki ulaz, izlaz algoritma je različit, neovisno o veličini promjena ulaznih podataka.\\
+Hash funkcije koje se koriste u blockchainu, kriptovalutama i općenito kriptografiji moraju biti jednostrane što znači da ne možemo lako iz izlaza dobiti odgovarajući ulaz.\\
+Svojstva optimalnih hash funkcija:
+\begin{itemize}
+	\item determinističke su - ista poruka (ulazna vrijednost) uvijek rezultira istim hashom
+	%it is deterministic, meaning that the same message always results in the same hash
+	\item velikom brzinom računaju hash vrijednost bilo koje poruke
+	%it is quick to compute the hash value for any given message
+	\item teško je i nepraktično generirati poruku koja daje određeni hash
+	%it is infeasible (ne moze se lako izracunati, neprakticno je) to generate a message that yields a given hash value
+	\item teško je pronaći dvije različite poruke sa istom hash vrijednosti
+	%it is infeasible to find two different messages with the same hash value
+	\item mala promjena poruke treba imati veliki utjecat na izalznu hash vrijednost kako se te dvije poruke ne bi mogle povezati na temelju sličnih izlaznih vrijednosti (učinak lavine)\cite{ideal-hash-fun}
+	%a small change to a message should change the hash value so extensively that the new hash value appears uncorrelated with the old hash value (avalanche effect)
+\end{itemize}
+%
+Sigurne hash funkcije su otporne na sve vrste kriptoanalitičkih napada:
+\begin{itemize}
+	\item preimage attack - napad u kojem se nastoji pronaći ulaz određenog hasha ukoliko znamo duljinu ulaza. Brute forceom (napad na koristeći grubu silu, u ovom kontekstu slanje svih mogućih ulaza u hash funkciju dok se ne dobije željeni hash) se ulaz može pronaći u $2^N$ evaluacija, ako je $N$ duljina ulaza
+	\item birthday attack - pokušaj pronalaska dva različita ulaza hash funkcije koji rezultiraju istim izlazom (kolizija) - $2^{L/2}$ evaluacija
+\end{itemize}
+
+\pagebreak
+\section{Pregled hash algoritama}
+Puno kriptovaluta, različita svojstva blabla.
+
+
+\subsection{SHA-256}
+
+
+\subsection{X11}
+
+
+\subsection{SCRYPT}
+
 
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
