@@ -195,7 +195,26 @@ Kriptovalute koje koriste X11 su Dash, Hatch, Pura, SmartCoin, CannabisCoin, Inf
 
 \pagebreak
 \subsection{SCRYPT}
+Još jedan u nizu hash algoritama koji su razvijeni s namjerom  da se izbjegne stvaranje ASIC-ova te maksimalno oteža njihovo rudarenje kriptovaluta. Scrypt algoritam je vrlo memorijski zahtjevan - osim što zahtjeva od rudara da brzo stvaraju brojeve, ti brojevi se spremaju u RAM i treba im se pristupiti prije dobivanja konačnog hasha. Ovim pristupom se drastično smanjuje učinkovitost integriranih krugova specifične namjene.\\
+Scrypt je osmislio Colin Percival za spremanje online sigurnosnih kopija UNIX operativnih sustava. Algoritam dodatno otežava rješavanje dodajući šum (noise) - nasumično generirane brojeve te tako povećava vrijeme potrebno za dobivanje hasha. \\
+Koriste ga kriptovalute Litecoin, Dogecoin, ProsperCoin, MonaCoin...\\
+Algoritam je sačinjen nekoliko parametara:
+\begin{itemize}
+	\item N - parametar koji označava koliko CPU/memorije traži algoritam
+	\item p - paralelizacijski parametar, pozitivni cijeli broj
+	\item r - veličina bloka
+	\item S - "sol", nasumična vrijednost koja se često koristi kao dodatni ulaz u kriptografskim funkcijama. Služi kao zaštita od \textit{Rainbow table} napada
+	\item P - ulazna vrijednost, niz znakova koji želimo hashirati
+	\item \textit{dkLen} - željena duljina izlazne vrijednosti u oktetima
+\end{itemize}
+%
+Navedene podatke prosljiedimo \textit{key derivation} funkciji PBKDF2 (funkcija kojom izvlačimo tajne ključeve iz vrijednosti kao što su master key ili neke vrste lozinke). PBKDF2 je akronim za Password-Based Key Derivation Function 2, kojom smanjujemo ranjivost na napade grubom silom (brute force) tako da dobijemo izvedeni ključ.\cite{scrypt}
 
+\pagebreak
+\subsection{Ethash}
+
+\pagebreak
+\section{Zaključak}
 
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
