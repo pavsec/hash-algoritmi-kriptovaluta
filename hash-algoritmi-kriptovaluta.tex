@@ -8,12 +8,16 @@
 \usepackage[square,numbers]{natbib}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{comment}
 \bibliographystyle{unsrtnat}
 
+\begin{comment}
 \geometry{
-	margin=2cm, 
-	lmargin=2.5cm
+margin=2cm, 
+lmargin=2.5cm
 }
+\end{comment}
+
 
 %\renewcommand{\bibsection}{\section{\refname}}
 \onehalfspacing
@@ -211,7 +215,29 @@ Algoritam je sačinjen nekoliko parametara:
 Navedene podatke prosljiedimo \textit{key derivation} funkciji PBKDF2 (funkcija kojom izvlačimo tajne ključeve iz vrijednosti kao što su master key ili neke vrste lozinke). PBKDF2 je akronim za Password-Based Key Derivation Function 2, kojom smanjujemo ranjivost na napade grubom silom (brute force) tako da dobijemo izvedeni ključ.\cite{scrypt}
 
 \pagebreak
-\subsection{Ethash}
+\subsection{Dagger Hashimoto}
+Dagger Hashimoto je prethodnik, istraživački algoritam za kriptovalutu Ethereum 1.0, kasnije zamijenjen za algoritam Ethash. Razvijen je s namjerom da ispuni sljedeće zahtjeve:
+\begin{itemize}
+	\item ASIC otpornost - mala mogućnost izrade ASIC-a koji će moći rudariti Ethereum ili kad se on uspije izraditi, minimalna isplativost ASIC-a naspram CPU
+	\item širok spektar različitih jednostavnih uređaja, uređaja male snage, koji će moći potvrditi blok
+	\item spremanje cijelog blockchain-a
+\end{itemize}
+Temelj algoritma Dagger Hashimoto činili su već poostojeći algoritmi:
+\begin{itemize}
+	\item Hashimoto - autor algoritma je Thaddeus Dryja, a ASIC otpornost nastoji postići tako što je vezan za IO, ograninčava pristupe memoriji tijekom rudarenja 
+	\item Dagger - razvio ga je Vitalik Buterin, ujedno i jedan od autora Ethereuma. Koristi acikličke grafove kako bi računanje bilo memorijski zahtjevno, ali i da bi validacija blokova istovremeno koristila relativno malo memorije. Alternativa isto tako memorijski zathjevnom algoritmu, Scryptu, odustalo se od njegova korištenja zbog otkrivenog manjka sigurnosti
+\end{itemize}
+\cite{dagger-hashimoto}
+
+\subsubsection{Ethash}
+Ethash je ažurirana verzija Dagger Hashimota, iako se više ne može nazvati tako zato što je algoritam značajno promijenjen kako bi se ispravili svi nedostatci njegova prethodnika u zadnjim fazama razvoja.\\
+The general route that the algorithm takes is as follows:
+
+There exists a seed which can be computed for each block by scanning through the block headers up until that point.
+From the seed, one can compute a 16 MB pseudorandom cache. Light clients store the cache.
+From the cache, we can generate a 1 GB dataset, with the property that each item in the dataset depends on only a small number of items from the cache. Full clients and miners store the dataset. The dataset grows linearly with time.
+Mining involves grabbing random slices of the dataset and hashing them together. Verification can be done with low memory by using the cache to regenerate the specific pieces of the dataset that you need, so you only need to store the cache.
+\cite{ethash}
 
 \pagebreak
 \section{Zaključak}
