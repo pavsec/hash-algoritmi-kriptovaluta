@@ -80,12 +80,16 @@ lmargin=2.5cm
 \pagebreak
 
 \section{Kriptovaluta}
-Kriptovaluta je vrsta digitalnog novca, elektronski način razmjene novca i zapisivanja transakcija na računalu. To je sredstvo razmjene koje koristi kriptografiju kako bi stvorilo i osiguralo prijenos novca.\cite{cc-wiki} Za razliku od banaka, kriptovalute su decentralizirani sustav što znači da nema središnje organizacije koja kontrolira vrijednost, provjerava transakcije ili na bilo koji drugi način utječe na razmjenu novca. Kriptovaluta je peer-to-peer sustav razmjene što znači da za svoje funkcioniranje koristi rad svojih korisnika, oni su zaslužni za stvaranje novih novčanih jedinica i prijenos postojećih.\\
+Kriptovaluta je vrsta digitalnog novca, elektronski način razmjene novca i zapisivanja transakcija na računalu. To je sredstvo razmjene koje koristi kriptografiju kako bi stvorilo i osiguralo prijenos novca.\cite{cc-wiki} Za razliku od banaka, kriptovalute su decentralizirani sustav što znači da nema središnje organizacije koja kontrolira vrijednost, provjerava transakcije, može utjecati da korisnik prima ili šalje novac, ili na bilo koji drugi način utječe na razmjenu novca. Kriptovaluta je peer-to-peer sustav razmjene što znači da za svoje funkcioniranje koristi rad svojih korisnika, oni su zaslužni za stvaranje novih novčanih jedinica i prijenos postojećih.\\
 Sigurnost i integritet transakcija osigurava zajednica rudara (\textit{miners}) koji svojim računalima ovjeravaju transakcije dodavanjem vremenske oznake i ubacivanjem u tzv. glavnu knjigu svih transakcija (\textit{ledger}). Transakcije su računalno zahtjevne i nepraktične za poništiti ili promijeniti što kriptovalutu čini vrlo sigurnim načinom prijenosa novca. \\
 Sustav je siguran dok god većinu čvorova kontroliraju "pošteni" (\textit{honest}) korisnici, a ne napadači (\textit{attackers}). \\
 Ispravnost svake jedinice kriptovalute osigurava blockchain.\cite{cc-survey}
 
 \subsection{Pregled kriptovaluta}
+Nakon sto je Satoshi 2009? objavio svoj rad u kojem opisuje kriptovalutu Bitcoin naglo je poraslo zanimanje za to područje.
+Stari koncept je predstavio na novi, moderan i upotrebljiv nacin te omogucio stvaranje i razvoj ostalih kriptovaluta.
+Vrhunac popularnosti je dosegao x godine a otad je daleko najvrijednija valuta poznata siroj javnosti a ne samo specificnim skupinama.\\
+Od ostalih kriptovaluta vrijedi izdvojiti Ethereum jer nije samo obicna kriptovvaluta vec nudi ostale stvari.
 \cite{bitcoin}
 
 
@@ -103,6 +107,9 @@ Proof of work je mehanizam kontrole pristupa koji koristimo kada želimo ograni�
 Kriptovalute primjenjuju proof of work tako što miner mora pronaći nonce vrijednost koja hashirana zajedno sa ostalim parametrima koji ulaze u blok, zadovoljava neke uvjete. Kao primjer se može uzeti kriptovaluta Bitcoin, kod koje hashirana vrijednost mora imati određen broj bitova na početku hasha nula. Što je više nula u tom zahtjevu to je teže naći pripradajući hash. \\
 Proof of Work se koristi u blockchainu kako bi se stvorio zapis transakcija koji se ne može lako promijeniti, tj. trebalo bi ponoviti potreban rad za sve transakcije koje su bile nakon te koju bi htjeli promijeniti. Najdulji lanac služi kao dokaz svih događaja u lancu i dokaz najveće potrošene procesorske snage.\cite{proof-of-work}
 
+
+\subsubsection{Smart contracts}
+Bitcoin, Ethereum
 
 \subsubsection{Hash funkcija}
 Hash funkcije su funkcije koje ulazne podatke proizvoljne dužine sažimaju u izlaz određenog formata i veličine. Idealni algoritmi neće imati kolizija, tj. za svaki ulaz, izlaz algoritma je različit, neovisno o veličini promjena ulaznih podataka.\\
@@ -231,16 +238,23 @@ Temelj algoritma Dagger Hashimoto činili su već poostojeći algoritmi:
 
 \subsubsection{Ethash}
 Ethash je ažurirana verzija Dagger Hashimota, iako se više ne može nazvati tako zato što je algoritam značajno promijenjen kako bi se ispravili svi nedostatci njegova prethodnika u zadnjim fazama razvoja.\\
-The general route that the algorithm takes is as follows:
-
-There exists a seed which can be computed for each block by scanning through the block headers up until that point.
-From the seed, one can compute a 16 MB pseudorandom cache. Light clients store the cache.
-From the cache, we can generate a 1 GB dataset, with the property that each item in the dataset depends on only a small number of items from the cache. Full clients and miners store the dataset. The dataset grows linearly with time.
-Mining involves grabbing random slices of the dataset and hashing them together. Verification can be done with low memory by using the cache to regenerate the specific pieces of the dataset that you need, so you only need to store the cache.
-\cite{ethash}
+Okvirni proces algoritma je sljedeći:
+\begin{itemize}
+	\item postoji nasumični broj koji se može izračunati prolaskom kroz zaglavlja postojećih blokova 
+	\item iz tog broja se računa pseudo nasumični cache od 16 MB koji spremaju lagani klijenti
+	\item na temelju brze memorije se stvori set podataka veličine 1GB kojeg spremaju klijenti i rudari. Set podataka raste s vremenom, a svaki element ovisi samo o malom broju elemenata iz brze memorije
+	\item rudarenjem se uzimaju nasumični dijelovi seta podataka koji se zatim zajedno hashiraju. Verifikacija se može napraviti vrlo brzo uz korištenje malo memorije, upotrebom brze memorije jednostavno se stvore potrebni dijelovi seta podataka\cite{ethash}
+\end{itemize}
+%
+Ethash koriste kriptovalute
 
 \pagebreak
 \section{Zaključak}
+Osim navedenih algoritama, u svijetu se za razlicite svrhe koristi jos nebrojeno mnogo drugih algoritama i hash funkcija.
+Pojava kriptovaluta, prvenestveno Bitcoina, svakako je povoljno utjecala na osmisljavanje novih algoritama i motivaciju za njihovo istrazivanje i testiranje. \\
+Algoritmi su svakako kljucni doo kriptovaluta i blockchaina na temelju kojeg su one implementirane. Utjecu na njihovu sigurnost, ispravnost....\\
+Najveci neprijatelj su im ASICovi koji svojim vlasnicima omogucavaju vrlo brzo i efikasno rudarenje naspram ostalih obicnih korisnika koji koriste cpu i gpu. Cilj svih navedenih algoritama je nauspjesno bio pokusati onemoguciti izradu ASICova za taj specificni algoritam. Pojedini su uspjeli samo odgoditi i oduziti njihov razvoj.\\
+U interesu je svima da se tako nesto i dogodi jer bi zasigurno pozitivno utjecalo kako na kriptovalutu koja ce prva poceti koristiti taj algoritam tako i sve grane racunarstva, matematike? Koje se bave kriptoanalizom.
 
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
