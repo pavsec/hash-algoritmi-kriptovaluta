@@ -63,7 +63,7 @@ lmargin=2.5cm
 		\Large
 		Algoritmi i strukture podataka \\
 		Zavod za računarstvo\\
-		prof. Kristijan Lenac \\
+		izv. prof. dr. sc. Kristijan Lenac \\
 		Tehnički fakultet Sveučilišta u Rijeci \\
 		Kolovoz 2020. 
 		
@@ -80,36 +80,44 @@ lmargin=2.5cm
 \pagebreak
 
 \section{Kriptovaluta}
-Kriptovaluta je vrsta digitalnog novca, elektronski način razmjene novca i zapisivanja transakcija na računalu. To je sredstvo razmjene koje koristi kriptografiju kako bi stvorilo i osiguralo prijenos novca.\cite{cc-wiki} Za razliku od banaka, kriptovalute su decentralizirani sustav što znači da nema središnje organizacije koja kontrolira vrijednost, provjerava transakcije, može utjecati da korisnik prima ili šalje novac, ili na bilo koji drugi način utječe na razmjenu novca. Kriptovaluta je peer-to-peer sustav razmjene što znači da za svoje funkcioniranje koristi rad svojih korisnika, oni su zaslužni za stvaranje novih novčanih jedinica i prijenos postojećih.\\
-Sigurnost i integritet transakcija osigurava zajednica rudara (\textit{miners}) koji svojim računalima ovjeravaju transakcije dodavanjem vremenske oznake i ubacivanjem u tzv. glavnu knjigu svih transakcija (\textit{ledger}). Transakcije su računalno zahtjevne i nepraktične za poništiti ili promijeniti što kriptovalutu čini vrlo sigurnim načinom prijenosa novca. \\
-Sustav je siguran dok god većinu čvorova kontroliraju "pošteni" (\textit{honest}) korisnici, a ne napadači (\textit{attackers}). \\
-Ispravnost svake jedinice kriptovalute osigurava blockchain.\cite{cc-survey}
+Kriptovaluta je vrsta digitalnog novca, elektronski način razmjene novca i zapisivanja transakcija na računalu. To je sredstvo razmjene koje koristi kriptografiju kako bi stvorilo i osiguralo prijenos novca. Za razliku od banaka, kriptovalute su decentralizirani sustav što znači da nema središnje organizacije koja kontrolira vrijednost, provjerava transakcije, može utjecati na korisnikovo primanje ili slanje novca, ili na bilo koji drugi način utječe na razmjenu novca. Kriptovaluta je peer-to-peer sustav razmjene što znači da za svoje funkcioniranje koristi rad svojih korisnika, oni su zaslužni za stvaranje novih novčanih jedinica i prijenos postojećih.\\
+Sigurnost i integritet transakcija osigurava zajednica rudara (\textit{miners}) koji svojim računalima ovjeravaju transakcije dodavanjem vremenske oznake i ubacivanjem u tzv. glavnu knjigu svih transakcija (\textit{ledger}). Transakcije su računalno zahtjevne i nepraktične za poništiti ili promijeniti što kriptovalutu čini vrlo sigurnim načinom prijenosa novca.\cite{cryptocurrency} \\
+Sustav je siguran dok god većinu čvorova kontroliraju pošteni (\textit{honest}) korisnici, a ne oni zlonamjerni (\textit{attackers}). \\
+Ispravnost svake jedinice kriptovalute osigurava blockchain.
 
-\subsection{Pregled kriptovaluta}
-Nakon sto je Satoshi 2009? objavio svoj rad u kojem opisuje kriptovalutu Bitcoin naglo je poraslo zanimanje za to područje.
-Stari koncept je predstavio na novi, moderan i upotrebljiv nacin te omogucio stvaranje i razvoj ostalih kriptovaluta.
-Vrhunac popularnosti je dosegao x godine a otad je daleko najvrijednija valuta poznata siroj javnosti a ne samo specificnim skupinama.\\
-Od ostalih kriptovaluta vrijedi izdvojiti Ethereum jer nije samo obicna kriptovvaluta vec nudi ostale stvari.
-\cite{bitcoin}
+\subsection{Značajne kriptovalute}
+Nakon sto je Satoshi Nakamoto 2008. objavio svoj rad u kojem opisuje kriptovalutu Bitcoin, naglo je poraslo zanimanje za navedeno područje.\cite{bitcoin} \\
+Koncept digitalnih valuta predstavljen je ranije\cite{b-money}, ali Nakamoto ga je predstavio na nov, moderan i upotrebljiv način te omogućio stvaranje i razvoj ostalih kriptovaluta. 
+Vrhunac vrijednosti Bitcoin je dosegao krajem 2017. godine, a otad je daleko najvrjednija, svima poznata, digitalna valuta. Na sam spomen naziva kriptovaluta, većina će odmah pomisliti na Bitcoin. Bez obzira na to, danas postoje i mnoge druge kriptovalute.\\
+Od ostalih kriptovaluta vrijedi izdvojiti open-source platformu Ethereum. Osim što je nakon Bitcoina najvrjednija kriptovaluta, omogućava izradu i pokretanje distribuiranih aplikacija.\cite{ethereum} \\
+Litecoin se od Bitcoina razlikuje po tome što joj je brzina stvaranja blokova puno veća te je time i potvrda transakcija brža. \cite{litecoin} \\
+Tether je jedna od prvih takozvanih stabilnih valuta. Sve kriptovalute su imale značajne poraste i padove vrijednosti, stoga je Tetheru bio cilj ublažiti nagle promjene vrijednosti te tako privući veći broj korisnika.\cite{tether}\\
+Monero je sigurna, privatna kriptovaluta koja onemogućava praćenje platitelja. Za svaku transakciju stvara grupu kriptografskih potpisa među kojima se nalazi i ispravan potpisnik kojeg nije moguće izdvojiti.\cite{monero}\\
+Uz navedene, i mnoge druge kriptovalute su ostavile svoj trag te doprinijele popularnosti korištenja digitalnog novca.
 
 
 \subsection{Blockchain}
-Sustav koji kriptovalute koriste za spremanje podataka o transakcijama je blockchain, decentralizirani mehanizam pohranjvanja informacija o transakcijama. Blockchain je distribuirana glavna knjiga u kojoj se spremaju i čuvaju podaci o transakcijama tako da svi korisnici imaju svoju kopiju, nema osobe ili organizacije koja ima popis transakcija te ih može mijenjati ili brisati. Sve informacije su vidljive svima koji koriste tu valutu te nije moguća manipulacija podataka. \\
-Blockchain je realiziran kao rastuća lista podataka raspoređenih u blokove. Svaki blok je povezan s prethodnim tako što sadrži hash vrijednost tog bloka. Osim hash vrijednosti, blokovi sadrže i: index bloka, hash prethodnog bloka, vremenske oznaku, podatake, koji su u slučaju
+Sustav koji kriptovalute koriste za spremanje podataka o transakcijama je blockchain, decentralizirani mehanizam pohranjivanja informacija o transakcijama. Blockchain je distribuirana glavna knjiga u kojoj se spremaju i čuvaju podaci o transakcijama tako da svi korisnici imaju svoju kopiju, nema osobe ili organizacije koja ima popis transakcija te ih može mijenjati ili brisati. Sve informacije su vidljive svima koji koriste tu valutu te nije moguća manipulacija podataka. \\
+Blockchain je realiziran kao rastuća lista podataka raspoređenih u blokove. Svaki blok je povezan s prethodnim tako što sadrži hash vrijednost tog bloka. Osim hash vrijednosti, blokovi sadrže i: index bloka, hash prethodnog bloka, vremenske oznaku, podatke, koji su u slučaju
 kriptovaluta, transakcije. \\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{slike/blockchain.png}
+	\caption{Prikaz blockchaina}
+\end{figure}
 Transakcije su strukturirane u obliku Merkle stabla koje se stvara hashiranjem podataka u više navrata. Prvo se hashiraju same transakcije, zatim upare dva hasha koji se ponovno hashiraju.
 Postupak se ponavlja dok ne dobijemo samo jedan hash, hash korijen (\textit{root hash}) ili  merkle korijen. Svaki list je hash transakcije, a svaki čvor hash prethodnih hasheva. Kada su podaci spremljeni u ovakvoj strukturi podataka, lako se može provjeriti da li je transakcija spremljena u tom setu podataka. \\
 Potvrda da su transakcije određenog bloka prihvaćeni od strane ostalih čvorova i time ispravni, dobije se kada novi čvorovi počnu koristiti hash tog bloka u potrazi za novim.
 
 
 \subsubsection{Proof of Work}
-Proof of work je mehanizam kontrole pristupa koji koristimo kada želimo ograničiti, ali ne i zabraniti pristup resursu. Ovaj mehanizam od korisnika zahtjeva neku vrstu rada, najčešće procesorko vrijeme, i tako odvraća denial-of-service napade i druge vrste iskorištavanja usluga kao što je spam. Proof of work traži od korisnika da izračuna neku funkciju, tzv. \textit{pricing function}.\\
-Kriptovalute primjenjuju proof of work tako što miner mora pronaći nonce vrijednost koja hashirana zajedno sa ostalim parametrima koji ulaze u blok, zadovoljava neke uvjete. Kao primjer se može uzeti kriptovaluta Bitcoin, kod koje hashirana vrijednost mora imati određen broj bitova na početku hasha nula. Što je više nula u tom zahtjevu to je teže naći pripradajući hash. \\
-Proof of Work se koristi u blockchainu kako bi se stvorio zapis transakcija koji se ne može lako promijeniti, tj. trebalo bi ponoviti potreban rad za sve transakcije koje su bile nakon te koju bi htjeli promijeniti. Najdulji lanac služi kao dokaz svih događaja u lancu i dokaz najveće potrošene procesorske snage.\cite{proof-of-work}
+Proof of work je mehanizam kontrole pristupa koji koristimo kada želimo ograničiti, ali ne i zabraniti pristup resursu. Ovaj mehanizam od korisnika zahtjeva neku vrstu rada, najčešće procesorsko vrijeme, i tako odvraća denial-of-service napade i druge vrste iskorištavanja usluga kao što je spam. Proof of work traži od korisnika da izračuna neku funkciju, tzv. \textit{pricing function}.\\
+Kriptovalute primjenjuju proof of work tako što miner mora pronaći nonce vrijednost (proizvoljan broj koji se koristi može koristiti samo jednom), koja hashirana zajedno sa ostalim parametrima koji ulaze u blok, zadovoljava neke uvjete. Kao primjer se može uzeti kriptovaluta Bitcoin, kod koje hashirana vrijednost mora imati određen broj bitova na početku hasha nula. Što je više nula u tom zahtjevu to je teže naći pripadajući hash. \\
+Proof of work se koristi u blockchainu kako bi se stvorio zapis transakcija koji se ne može lako promijeniti, tj. trebalo bi ponoviti potreban rad za sve transakcije koje su bile nakon te koju bi htjeli promijeniti. Najdulji lanac služi kao dokaz svih događaja u lancu i dokaz najveće utrošene procesorske snage.\cite{proof-of-work}
 
 
-\subsubsection{Smart contracts}
-Bitcoin, Ethereum
+%\subsubsection{Smart contracts}
+%Bitcoin, Ethereum
 
 \subsubsection{Hash funkcija}
 Hash funkcije su funkcije koje ulazne podatke proizvoljne dužine sažimaju u izlaz određenog formata i veličine. Idealni algoritmi neće imati kolizija, tj. za svaki ulaz, izlaz algoritma je različit, neovisno o veličini promjena ulaznih podataka.\\
@@ -122,15 +130,15 @@ Svojstva optimalnih hash funkcija:
 	%it is quick to compute the hash value for any given message
 	\item teško je i nepraktično generirati poruku koja daje određeni hash
 	%it is infeasible (ne moze se lako izracunati, neprakticno je) to generate a message that yields a given hash value
-	\item teško je pronaći dvije različite poruke sa istom hash vrijednosti
+	\item teško je pronaći dvije različite poruke s istom hash vrijednosti
 	%it is infeasible to find two different messages with the same hash value
-	\item mala promjena poruke treba imati veliki utjecat na izalznu hash vrijednost kako se te dvije poruke ne bi mogle povezati na temelju sličnih izlaznih vrijednosti (učinak lavine)\cite{ideal-hash-fun}
+	\item mala promjena poruke treba imati veliki utjecati na izlaznu hash vrijednost kako se te dvije poruke ne bi mogle povezati na temelju sličnih izlaznih vrijednosti (učinak lavine)\cite{ideal-hash-fun}
 	%a small change to a message should change the hash value so extensively that the new hash value appears uncorrelated with the old hash value (avalanche effect)
 \end{itemize}
 %
 Sigurne hash funkcije su otporne na sve vrste kriptoanalitičkih napada:
 \begin{itemize}
-	\item preimage attack - napad u kojem se nastoji pronaći ulaz određenog hasha ukoliko znamo duljinu ulaza. Brute forceom (napad na koristeći grubu silu, u ovom kontekstu slanje svih mogućih ulaza u hash funkciju dok se ne dobije željeni hash) se ulaz može pronaći u $2^N$ evaluacija, ako je $N$ duljina ulaza
+	\item preimage attack - napad u kojem se nastoji pronaći ulaz određenog hasha ako znamo duljinu ulaza. Brute forceom (napad na koristeći grubu silu, u ovom kontekstu slanje svih mogućih ulaza u hash funkciju dok se ne dobije željeni hash) se ulaz može pronaći u $2^N$ evaluacija, ako je $N$ duljina ulaza
 	%(imam poznat neki hash i trazim input koji ce mi kao rezultat dat taj hash)
 	\item birthday attack - pokušaj pronalaska dva različita ulaza hash funkcije koji rezultiraju istim izlazom (kolizija) - $2^{L/2}$ evaluacija
 	\item collision attack - pronađena su dva različita ulaza čiji su izlazi identični
@@ -138,18 +146,18 @@ Sigurne hash funkcije su otporne na sve vrste kriptoanalitičkih napada:
 
 \pagebreak
 \section{Pregled hash algoritama}
-Puno kriptovaluta, različita svojstva blabla.
+S obzirom na trenutan broj kriptovaluta, relativno je malen broj različitih algoritama koje one koriste. Većina ih je implementirana s već testiranim i dokazano ispravnim algoritmima kao što su SHA-256 i Scrypt, dok su određene kriptovalute razvile vlastite funkcije i algoritme: Ethereum (Ethash).
 
 
 \subsection{SHA-256}
-Secure Hash Algorithm 2 je set kriptografskih funkcija koje je 2001. objavila NSA. Broj 256 u nazivu označava veličinu izlazne vrijednosti funkcije koja iznosi 256 bitova. Postoji nekoliko različitih verzija ovog algoritma sa različitim veličinama izlaza od 224, 384, 512, 512/224 i 512/256 bitova. \\
+Secure Hash Algorithm 2 je set kriptografskih funkcija koje je 2001. objavila NSA. Broj 256 u nazivu označava veličinu izlazne vrijednosti funkcije koja iznosi 256 bitova. Postoji nekoliko različitih verzija ovog algoritma s različitim veličinama izlaza od 224, 384, 512, 512/224 i 512/256 bitova. \\
 % ?? output=digest
 SHA je jedan od najkorištenijih algoritama u svijetu, a koriste ga među ostalim kriptovalute Bitcoin, Namecoin, Peercoin, Nxt, MazaCoin, te se koristi i u autentikacijskom procesu Debian softver paketa. \\
 SHA-256 je napravljen koristeći Merkle-Damgard strukturu koja je pak napravljena pomoću Davies–Meyer jednostrane kompresijske funkcije. Temeljna ideja iza Davies–Meyer konstrukcije je kompresija bloka teksta u $n$ bitova koristeći enkripcijski algoritam. To se postiže stavljanjem nasumične početne vrijednosti od $n$ bitova kao poruke i korištenjem teksta kao ključa. Time se kao produkt enkripcije dobije blok od $n$ bitova. Na rezultat se zatim još primjeni operacija XOR kako bi se smanjila vjerojatnost stvaranja kolizije. \\
 Merkle–Damgård hash funkcija je način stvaranja kriptografske hash funkcije otporne na kolizije iz jednostranih kompresijskih funkcija. Koristi se u SHA algoritmu kod rastavljanja ulaza na blokove duljine 512 bitova, koji se zatim obrađuju jedan po jedan koristeći jednostrane kompresijske funkcije bazirane na Davis-Meyeru.
 
 \subsubsection{Opis rada}
-Poruka se dijeli u blokove duljine $512$ bitova, a ukoliko je blok manji, proširimo ga do 512 bitova. Blokovi se zatim obrađuju jedan po jedan.\\
+Poruka se dijeli u blokove duljine $512$ bitova, a ako je blok manji, proširimo ga do 512 bitova. Blokovi se zatim obrađuju jedan po jedan.\\
 Poruka se proširuje tako da se duljini poruke  nadoda jedan bit na kraj čime se dobije $N$ bitova. Na kraj dobivenog dodaje se $512 - 64 - N$ nula, a u zadnja 64 bita se zapiše duljinu originalne poruke.
 Blokovi od $512$ bitova dijele se na $16$ dijelova po $32$ bita ($m0 - m15$).\\
 
@@ -168,14 +176,14 @@ Pseudokod:
 	\end{itemize}
 	\item Glavna petlja ($N$ iteracija gdje je $N$ broj blokova poruke):
 	\begin{enumerate}
-		\item inicijalizacija $a, b, c, d, e, f, g, h$ sa vrijednostima $h_1$ do $h_8$
+		\item inicijalizacija $a, b, c, d, e, f, g, h$ s vrijednostima $h_1$ do $h_8$
 		\item primjena SHA-256 kompresijske funkcije čime se dobiju nove vrijednosti varijabli $a - h$
 		\item računanje novih $h_1 - h_8$, tako da $h_1 = a + h_1 . . . h_8 = h + h_8$
 	\end{enumerate}
-	Rezulat izvršavanja petlje je hash poruke s početka.
+	Rezultat izvršavanja petlje je hash poruke s početka.
 	\item Kompresijska funkcija:
 	\begin{itemize}
-		\item 64 iteracije, 6 logičkih funkcija koje se koriste za dobivanje novih vrijednosti $a - h$. Sve funkcije rade sa 32-bitnimm riječima(?) i izlaz im je velićine 32 bita. U računanju se koriste i 64 konstante, 32-bit riječi $K_0-K_{63}$ (ostatci kubnih korijena prvih 64 prostih brojeva)
+		\item 64 iteracije, 6 logičkih funkcija koje se koriste za dobivanje novih vrijednosti $a - h$. Sve funkcije rade sa 32-bitnim riječima i izlaz im je velićine 32 bita. U računanju se koriste i 64 konstante, 32-bit riječi $K_0-K_{63}$ (ostatci kubnih korijena prvih 64 prostih brojeva)
 		\item u računanju se za kriptiranje koristi: bitwise XOR, bitwise AND, bitwise OR, bitwise complement, zbrajanje mod $2^{32}$, posmak u desno za $n$ bitova, rotacija u desno za $n$ bitova\cite{sha-description}
 		\begin{figure}[h!]
 			\centering
@@ -193,8 +201,8 @@ Pseudokod:
 \subsection{X11}
 X11 algoritam je, isto kao i SHA-256, proof of work algoritam. Za razliku od ostalih algoritama koristi drugačiji pristup hashiranju, ulančavanje algoritama. Razvio ga je Evan Duffield te je algoritam 2014. implementiran u protokol Darkcoin kriptovalute, kasnije preimenovane u DASH.
 Napravljen je kako bi se otežala izrada ASIC-a koji će efikasno rudariti X11 algoritam, iako danas više nije ASIC otporan.\\
-ASIC (application-specific integrated circuit) IC čip spečificno izrađen za neki zadatak, svrhu. Kod kriptovaluta njihova uloga je računanje hash algoritama kriptovaluta (kao primjer možemo uzeti Bitcoin ASIC miner koji je dizajniran za računanje SHA-256). \\
-ASIC mineri se oduvijek smatrju prjetnjom sustava rudarenja i kriptovaluta. Glavni su uzrok centralizacije hashing snage. GPU i CPU su u nepovoljnoj poziciji kraj ASIC-a ako se uzme u obzir rudarenje blokova i dobivanje nagrada za to, te tako ograničavaju većinu potencijalnih korisnika od rudarenja kriptovalute. 
+ASIC (application-specific integrated circuit) IC čip specifično izrađen za neki zadatak, svrhu. Kod kriptovaluta njihova uloga je računanje hash algoritama kriptovaluta (kao primjer možemo uzeti Bitcoin ASIC miner koji je dizajniran za računanje SHA-256). \\
+ASIC mineri se oduvijek smatraju prijetnjom sustava rudarenja i kriptovaluta. Glavni su uzrok centralizacije hashing snage. GPU i CPU su u nepovoljnoj poziciji kraj ASIC-a ako se uzme u obzir rudarenje blokova i dobivanje nagrada za to, te tako ograničavaju većinu potencijalnih korisnika od rudarenja kriptovalute. 
 ASICs su superiorniji CPU i GPU zato što mogu izračunati više hasheva po sekundi, tako da su rudari koji koriste ASIC u prednosti nad ostalima.
 % (https://coinguides.org/x11-algorithm-coins/)
 S obzirom na navedene poteškoće s kojima se susreću kriptovalute te njihovi rudari, X11 algoritam je dizajniran kako bi bio efikasan i na CPU i GPU. Osmišljen je da bi bio čim duže ASIC resistant (ili duže nego ostale konkurentne kriptovalute) kako bi "hobbyists" mogli dulje sudjelovati u rudarenju, što je vrlo povoljno za Dash kriptovalutu, njeno širenje i dobru distribuciju. \\  
@@ -204,7 +212,6 @@ Razvijeno je još algoritama koji se temelje na istoj ideji kao i X11: X13, X14,
 Kriptovalute koje koriste X11 su Dash, Hatch, Pura, SmartCoin, CannabisCoin, Influxcoin, StartCoin, Onix, i mnoge druge.\cite{x11-description}
 
 
-\pagebreak
 \subsection{SCRYPT}
 Još jedan u nizu hash algoritama koji su razvijeni s namjerom  da se izbjegne stvaranje ASIC-ova te maksimalno oteža njihovo rudarenje kriptovaluta. Scrypt algoritam je vrlo memorijski zahtjevan - osim što zahtjeva od rudara da brzo stvaraju brojeve, ti brojevi se spremaju u RAM i treba im se pristupiti prije dobivanja konačnog hasha. Ovim pristupom se drastično smanjuje učinkovitost integriranih krugova specifične namjene.\\
 Scrypt je osmislio Colin Percival za spremanje online sigurnosnih kopija UNIX operativnih sustava. Algoritam dodatno otežava rješavanje dodajući šum (noise) - nasumično generirane brojeve te tako povećava vrijeme potrebno za dobivanje hasha. \\
@@ -219,7 +226,7 @@ Algoritam je sačinjen nekoliko parametara:
 	\item \textit{dkLen} - željena duljina izlazne vrijednosti u oktetima
 \end{itemize}
 %
-Navedene podatke prosljiedimo \textit{key derivation} funkciji PBKDF2 (funkcija kojom izvlačimo tajne ključeve iz vrijednosti kao što su master key ili neke vrste lozinke). PBKDF2 je akronim za Password-Based Key Derivation Function 2, kojom smanjujemo ranjivost na napade grubom silom (brute force) tako da dobijemo izvedeni ključ.\cite{scrypt}
+Navedene podatke proslijedimo \textit{key derivation} funkciji PBKDF2 (funkcija kojom izvlačimo tajne ključeve iz vrijednosti kao što su master key ili neke vrste lozinke). PBKDF2 je akronim za Password-Based Key Derivation Function 2, kojom smanjujemo ranjivost na napade grubom silom (brute force) tako da dobijemo izvedeni ključ.\cite{scrypt}
 
 \pagebreak
 \subsection{Dagger Hashimoto}
@@ -229,10 +236,10 @@ Dagger Hashimoto je prethodnik, istraživački algoritam za kriptovalutu Ethereu
 	\item širok spektar različitih jednostavnih uređaja, uređaja male snage, koji će moći potvrditi blok
 	\item spremanje cijelog blockchain-a
 \end{itemize}
-Temelj algoritma Dagger Hashimoto činili su već poostojeći algoritmi:
+Temelj algoritma Dagger Hashimoto činili su već postojeći algoritmi:
 \begin{itemize}
-	\item Hashimoto - autor algoritma je Thaddeus Dryja, a ASIC otpornost nastoji postići tako što je vezan za IO, ograninčava pristupe memoriji tijekom rudarenja 
-	\item Dagger - razvio ga je Vitalik Buterin, ujedno i jedan od autora Ethereuma. Koristi acikličke grafove kako bi računanje bilo memorijski zahtjevno, ali i da bi validacija blokova istovremeno koristila relativno malo memorije. Alternativa isto tako memorijski zathjevnom algoritmu, Scryptu, odustalo se od njegova korištenja zbog otkrivenog manjka sigurnosti
+	\item Hashimoto - autor algoritma je Thaddeus Dryja, a ASIC otpornost nastoji postići tako što je vezan za IO, ograničava pristupe memoriji tijekom rudarenja 
+	\item Dagger - razvio ga je Vitalik Buterin, ujedno i jedan od autora Ethereuma. Koristi acikličke grafove kako bi računanje bilo memorijski zahtjevno, ali i da bi validacija blokova istovremeno koristila relativno malo memorije. Alternativa isto tako memorijski zahtjevnom algoritmu, Scryptu, odustalo se od njegova korištenja zbog otkrivenog manjka sigurnosti
 \end{itemize}
 \cite{dagger-hashimoto}
 
@@ -246,15 +253,17 @@ Okvirni proces algoritma je sljedeći:
 	\item rudarenjem se uzimaju nasumični dijelovi seta podataka koji se zatim zajedno hashiraju. Verifikacija se može napraviti vrlo brzo uz korištenje malo memorije, upotrebom brze memorije jednostavno se stvore potrebni dijelovi seta podataka\cite{ethash}
 \end{itemize}
 %
-Ethash koriste kriptovalute
+
+\subsection{CryptoNight}
+\cite{cryptonighgt} i \cite{monero}
 
 \pagebreak
 \section{Zaključak}
-Osim navedenih algoritama, u svijetu se za razlicite svrhe koristi jos nebrojeno mnogo drugih algoritama i hash funkcija.
-Pojava kriptovaluta, prvenestveno Bitcoina, svakako je povoljno utjecala na osmisljavanje novih algoritama i motivaciju za njihovo istrazivanje i testiranje. \\
-Algoritmi su svakako kljucni doo kriptovaluta i blockchaina na temelju kojeg su one implementirane. Utjecu na njihovu sigurnost, ispravnost....\\
-Najveci neprijatelj su im ASICovi koji svojim vlasnicima omogucavaju vrlo brzo i efikasno rudarenje naspram ostalih obicnih korisnika koji koriste cpu i gpu. Cilj svih navedenih algoritama je nauspjesno bio pokusati onemoguciti izradu ASICova za taj specificni algoritam. Pojedini su uspjeli samo odgoditi i oduziti njihov razvoj.\\
-U interesu je svima da se tako nesto i dogodi jer bi zasigurno pozitivno utjecalo kako na kriptovalutu koja ce prva poceti koristiti taj algoritam tako i sve grane racunarstva, matematike? Koje se bave kriptoanalizom.
+Osim navedenih algoritama, u svijetu se u različite svrhe koristi nebrojeno mnogo drugih algoritama i hash funkcija.\\
+Pojava kriptovaluta, prvenstveno Bitcoina, svakako je povoljno utjecala na osmišljavanje novih algoritama i motivaciju za njihovo istraživanje i testiranje. \\
+Algoritmi su ključni dio kriptovaluta i blockchaina na temelju kojeg su one implementirane. Utječu na njihovu sigurnost i ispravnost\\
+Najveći neprijatelj su im ASIC-i koji svojim vlasnicima omogućavaju vrlo brzo i efikasno rudarenje naspram ostalih "običnih" korisnika koji koriste njima dostupne CPU i GPU. Cilj svih navedenih algoritama je neuspješno bio onemogućiti izradu ASIC-a za taj specifični algoritam. Pojedini su uspjeli samo odgoditi i produžiti njihov razvoj.\\
+U najboljem interesu je svima uključenima da se tako nešto i dogodi jer bi zasigurno pozitivno utjecalo kako na kriptovalutu koja će prva koristiti taj algoritam, tako i sva područja koja se bave kriptoanalizom.
 
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
