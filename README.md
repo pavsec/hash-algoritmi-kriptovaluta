@@ -1,2 +1,2 @@
 # hash-algoritmi-kriptovaluta
-Uporedba hash algoritama kriptovaluta
+Usporedba hash algoritama kriptovaluta
