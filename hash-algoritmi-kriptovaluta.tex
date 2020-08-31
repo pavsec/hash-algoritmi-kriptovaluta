@@ -144,14 +144,19 @@ Svojstva optimalnih hash funkcija:
 Sigurne hash funkcije su otporne na sve vrste kriptoanalitičkih napada:
 \begin{itemize}
 	\item \textit{preimage attack} - napad u kojem se nastoji pronaći ulaz određenog hasha ako znamo duljinu ulaza. \textit{Brute force} napadom (napad koristeći grubu silu, u ovom kontekstu slanje svih mogućih ulaza u hash funkciju dok se ne dobije željeni hash) se ulaz može pronaći u $2^N$ evaluacija, ako je $N$ duljina ulaza
+	\item \textit{collision attack} - napad čiji se uspjeh temelji na pronalasku dva različita ulaza čiji su izlazi identični
 	%(imam poznat neki hash i trazim input koji ce mi kao rezultat dat taj hash)
-	\item \textit{birthday attack} - pokušaj pronalaska dva različita ulaza hash funkcije koji rezultiraju istim izlazom (kolizija) - $2^{N/2}$ evaluacija
-	\item \textit{collision attack} - pronađena su dva različita ulaza čiji su izlazi identični
+	\item \textit{birthday attack} - pronalazak dva različita ulaza hash funkcije koji rezultiraju istim izlazom (kolizija) slučajno, nasumičnim procesom
 \end{itemize}
+
+\subsubsection{ASIC}
+ASIC (application-specific integrated circuit) je IC čip specifično izrađen za neki zadatak, svrhu. Kod kriptovaluta njihova uloga je računanje hash algoritama kriptovaluta (kao primjer možemo uzeti Bitcoin ASIC miner koji je dizajniran za računanje SHA-256). \\
+ASIC mineri se oduvijek smatraju prijetnjom sustava rudarenja i kriptovaluta. Glavni su uzrok centralizacije hashing snage. GPU i CPU su u nepovoljnoj poziciji kraj ASIC-a ako se uzme u obzir rudarenje blokova i dobivanje nagrada za to, te tako ograničavaju većinu potencijalnih korisnika od rudarenja kriptovalute. 
+ASIC-i su superiorniji CPU i GPU zato što mogu izračunati više hasheva po sekundi, tako da su rudari koji koriste ASIC u prednosti nad ostalima.\cite{asic}\\
 
 \pagebreak
 \section{Pregled hash algoritama}
-S obzirom na trenutan broj kriptovaluta, relativno je malen broj različitih algoritama koje one koriste. Većina ih je implementirana s već testiranim i dokazano ispravnim algoritmima kao što su SHA-256 i Scrypt, dok su određene kriptovalute razvile vlastite funkcije i algoritme: Ethereum (Ethash).
+S obzirom na trenutan broj kriptovaluta, relativno je malen broj različitih algoritama koje one koriste. Većina ih je implementirana s već testiranim i često upotrebljavanim algoritmima kao što su SHA-256 i Scrypt, dok su određene kriptovalute razvile vlastite funkcije i algoritme: Ethereum (Ethash).
 
 
 \subsection{SHA-256}
@@ -225,11 +230,6 @@ X11 je sigurniji od SHA-256. Sve hash funkcije koje se koriste kod X11 algoritma
 Razvijeno je još algoritama koji se temelje na istoj ideji kao i X11: X13, X14, X15 i X17 koji koriste više hash funkcija.\\
 Kriptovalute koje koriste X11 su Dash, Hatch, Pura, SmartCoin, CannabisCoin, Influxcoin, StartCoin, Onix, i mnoge druge.\cite{x11-description} \\
 Napravljen je kako bi se otežala izrada ASIC-a koji će efikasno rudariti X11 algoritam, iako danas više nije ASIC otporan.\\
-
-\subsubsection{ASIC}
-ASIC (application-specific integrated circuit) je IC čip specifično izrađen za neki zadatak, svrhu. Kod kriptovaluta njihova uloga je računanje hash algoritama kriptovaluta (kao primjer možemo uzeti Bitcoin ASIC miner koji je dizajniran za računanje SHA-256). \\
-ASIC mineri se oduvijek smatraju prijetnjom sustava rudarenja i kriptovaluta. Glavni su uzrok centralizacije hashing snage. GPU i CPU su u nepovoljnoj poziciji kraj ASIC-a ako se uzme u obzir rudarenje blokova i dobivanje nagrada za to, te tako ograničavaju većinu potencijalnih korisnika od rudarenja kriptovalute. 
-ASIC-i su superiorniji CPU i GPU zato što mogu izračunati više hasheva po sekundi, tako da su rudari koji koriste ASIC u prednosti nad ostalima.\cite{asic}\\
 % (https://coinguides.org/x11-algorithm-coins/)
 S obzirom na navedene poteškoće s kojima se susreću kriptovalute te njihovi rudari, X11 algoritam je dizajniran kako bi bio efikasan i na CPU i GPU. Osmišljen je da bi bio čim duže ASIC otporan (ili duže nego ostale konkurentne kriptovalute) kako bi "obični" korisnici mogli dulje sudjelovati u rudarenju, što je vrlo povoljno za Dash kriptovalutu, njeno širenje i dobru distribuciju. \\  
 
@@ -282,14 +282,25 @@ Okvirni proces algoritma je sljedeći:
 
 \subsection{CryptoNight}
 Slično ostalim algoritmima, CryptoNight-u je glavni cilj otpornost na ASIC, a uz to, efikasniji je za korištenje na CPU nego na GPU. Izvršavanje algoritma je vrlo osjetljivo na latenciju memorije zato što se kod implementacije koristi petlja u kojoj se neprestano čitaju i pišu podaci u memoriju.\\
-Algoritam je realiziran koristeći hash funkciju Keccak čiji se izlaz proslijedi jednoj od sljedećih funkcija na temelju posljednja dva, najmanje značajna bita dobivenog rezultata: Skein, JH, Groestl ili BLAKE.\cite{cryptonighgt}
+CryptoNight algoritam se odvija u tri koraka:
+\begin{enumerate}
+	\item inicijalizacija memorije s pseudo nasumičnim podacima. Ulaz se hashira Keccak algoritmom te se nad dobivenim rezultatom provodi AES enkripcija čime se inicijalizira prvih 128 bitova memorije. Zatim se dobiveni blok podataka ponovno enkriptira te zapiše u sljedećih 128 bitova. Proces se ponavlja dok enkriptirani podaci ne zauzmu 2MiB memorije
+	\item petlja u kojoj se ponavlja čitanje i pisanje u memoriju. Petlja se ponavlja $524 288$ puta
+	\item hashiranje cijele memorije u kojoj se nalaze podaci nad kojima su se odvijale navedene operacije. U zadnjem koraku algoritma, izlaz se proslijedi jednoj od sljedećih funkcija na temelju posljednja dva, najmanje značajna bita dobivenog rezultata: Skein, JH, Groestl ili BLAKE.\cite{cryptonighgt}
+\end{enumerate}
+
+\subsection{Cuckoo cycle}
+Cuckoo cycle je prvi proof-of-work algoritam koji se temelji na teoriji grafova. Za razliku od ostalih često upotrebljavanih algoritama kao što su SHA-256 i SHA3, vrlo je jednostavan te je namijenjen rudarenju pomoću ASIC-a. Za efikasnije rudarenje koristi SRAM (statički RAM, memorija čiji se podaci brišu gubitkom napajanja), koji je lakše implementirati za ASIC, nego li za CPU ili GPU.\\
+Nastoji biti najjednostavniji mogući proof-of-work algoritam.
+\cite{cuckoo}
+
 
 \pagebreak
 \section{Zaključak}
 Osim navedenih algoritama, u svijetu se u različite svrhe koristi nebrojeno mnogo drugih algoritama i hash funkcija.\\
 Pojava kriptovaluta, prvenstveno Bitcoina, svakako je povoljno utjecala na osmišljavanje novih algoritama i motivaciju za njihovo istraživanje i testiranje. \\
 Algoritmi su ključni dio kriptovaluta i blockchaina na temelju kojeg su one implementirane. Utječu na njihovu sigurnost i ispravnost.\\
-Najveći neprijatelj su im ASIC-i koji svojim vlasnicima omogućavaju vrlo brzo i efikasno rudarenje naspram ostalih "običnih" korisnika koji koriste njima dostupne CPU i GPU. Cilj svih navedenih algoritama je, relativno neuspješno, bio onemogućiti izradu ASIC-a za taj specifični algoritam. U većini slučajeva, uspješno je samo odgođen i produljen njihov razvoj.\\
+Decentralizaciji kriptovaluta prijete ASIC-i koji svojim vlasnicima omogućavaju vrlo brzo i efikasno rudarenje naspram ostalih "običnih" korisnika koji koriste njima dostupne CPU i GPU. Pojavom ASIC-a za pojedini algoritam većini korisnika prestaje biti isplativo rudarenje, te većina novih novčanih jedinica pripadne manjem broju korisnika. Cilj svih navedenih algoritama je, relativno neuspješno, bio onemogućiti izradu ASIC-a za taj specifični algoritam. U većini slučajeva, uspješno je samo odgođen i produljen njihov razvoj. S druge strane, prebacivanje cijele mreže na rudarenje pomoću ASIC-a bi uvelike doprinjelo sigurnosti kriptovalute koja bi koristila takav pristup.\cite{asic-plus} Stoga se isplativost njihove upotrebe mora dodatno istražiti.\\
 %U najboljem interesu je svima uključenima da se tako nešto i dogodi jer bi zasigurno pozitivno utjecalo kako na kriptovalutu koja će prva koristiti taj algoritam, tako i sva područja koja se bave kriptoanalizom.
 Daljnji razvoj i širenje kriptovaluta zasigurno će pozitivno utjecati na razvijanje novih, boljih, sigurnijih algoritama te kriptoanalize općenito.
 
