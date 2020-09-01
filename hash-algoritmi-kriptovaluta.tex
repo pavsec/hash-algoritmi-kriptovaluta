@@ -115,7 +115,8 @@ Potvrda da su transakcije određenog bloka prihvaćeni od strane ostalih čvorov
 
 
 \subsubsection{Proof of Work}
-Proof of work je mehanizam kontrole pristupa koji koristimo kada želimo ograničiti, ali ne i zabraniti pristup resursu. Ovaj mehanizam od korisnika zahtjeva neku vrstu rada, najčešće procesorsko vrijeme, i tako odvraća \textit{denial-of-service} napade i druge vrste iskorištavanja usluga kao što je spam. Proof of work traži od korisnika da izračuna neku funkciju, tzv. \textit{pricing function}.\cite{proof-of-work}\\
+Proof of work je mehanizam postizanja distribuiranog konsenzusa. Ključni je dio blockchaina jer ima veliki utjecaj na njegovu sigurnost i performanse. Pruža način na koji se korisnici mogu složiti oko prihvaćanja svih prijašnjih transakcija i potvrde nadolazećih, a osigurava i cijeli blockchain od malicioznih čvorova, ako je većina sudionika dobronamjerna.\cite{distributed-consensus}\\
+Koristimo kada želimo ograničiti, ali ne i zabraniti pristup resursu. Ovaj mehanizam od korisnika zahtjeva neku vrstu rada, najčešće procesorsko vrijeme, i tako odvraća \textit{denial-of-service} napade i druge vrste iskorištavanja usluga kao što je spam. Proof of work traži od korisnika da izračuna neku funkciju, tzv. \textit{pricing function}.\cite{proof-of-work}\\
 Kriptovalute primjenjuju proof of work tako što miner mora pronaći nonce vrijednost (proizvoljan broj koji se koristi može koristiti samo jednom), koja hashirana zajedno sa ostalim parametrima koji ulaze u blok, zadovoljava neke uvjete. Kao primjer se može uzeti kriptovaluta Bitcoin, kod koje hashirana vrijednost mora imati određen broj bitova na početku hasha nula. Što je više nula u tom zahtjevu to je teže naći pripadajući hash. \\
 Proof of work se koristi u blockchainu kako bi se stvorio zapis transakcija koji se ne može lako promijeniti, tj. trebalo bi ponoviti potreban rad za sve transakcije koje su bile nakon te koju bi htjeli promijeniti. Najdulji lanac služi kao dokaz svih događaja u lancu i dokaz najveće utrošene procesorske snage.
 
@@ -140,7 +141,7 @@ Svojstva optimalnih hash funkcija:
 	%a small change to a message should change the hash value so extensively that the new hash value appears uncorrelated with the old hash value (avalanche effect)
 \end{itemize}
 %
-\pagebreak
+%\pagebreak
 Sigurne hash funkcije su otporne na sve vrste kriptoanalitičkih napada:
 \begin{itemize}
 	\item \textit{preimage attack} - napad u kojem se nastoji pronaći ulaz određenog hasha ako znamo duljinu ulaza. \textit{Brute force} napadom (napad koristeći grubu silu, u ovom kontekstu slanje svih mogućih ulaza u hash funkciju dok se ne dobije željeni hash) se ulaz može pronaći u $2^N$ evaluacija, ako je $N$ duljina ulaza
@@ -288,11 +289,13 @@ CryptoNight algoritam se odvija u tri koraka:
 	\item petlja u kojoj se ponavlja čitanje i pisanje u memoriju. Petlja se ponavlja $524 288$ puta
 	\item hashiranje cijele memorije u kojoj se nalaze podaci nad kojima su se odvijale navedene operacije. U zadnjem koraku algoritma, izlaz se proslijedi jednoj od sljedećih funkcija na temelju posljednja dva, najmanje značajna bita dobivenog rezultata: Skein, JH, Groestl ili BLAKE.\cite{cryptonighgt}
 \end{enumerate}
-
+\begin{comment}
 \subsection{Cuckoo cycle}
 Cuckoo cycle je prvi proof-of-work algoritam koji se temelji na teoriji grafova. Za razliku od ostalih često upotrebljavanih algoritama kao što su SHA-256 i SHA3, vrlo je jednostavan te je namijenjen rudarenju pomoću ASIC-a. Za efikasnije rudarenje koristi SRAM (statički RAM, memorija čiji se podaci brišu gubitkom napajanja), koji je lakše implementirati za ASIC, nego li za CPU ili GPU.\\
 Nastoji biti najjednostavniji mogući proof-of-work algoritam.
 \cite{cuckoo}
+
+\end{comment}
 
 
 \pagebreak
